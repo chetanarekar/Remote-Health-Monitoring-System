@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health Monitoring System</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        form {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #dataVisualization {
+            /* Styles for displaying data visualization */
+        }
+
+        #alertMessage {
+            color: red;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Health Monitoring System</h1>
+        <form id="healthForm">
+            <label for="heartRate">Heart Rate:</label>
+            <input type="number" id="heartRate" placeholder="Enter heart rate">
+            
+            <label for="bloodPressure">Blood Pressure:</label>
+            <input type="text" id="bloodPressure" placeholder="Enter blood pressure">
+            
+            <label for="temperature">Temperature:</label>
+            <input type="number" id="temperature" placeholder="Enter temperature">
+            
+            <button type="button" onclick="submitForm()">Submit</button>
+        </form>
+
+        <div id="dataVisualization">
+            <!-- Data will be displayed here -->
+        </div>
+
+        <div id="alertMessage">
+            <!-- Alert messages will be displayed here -->
+        </div>
+    </div>
+
+    <script>
+        function submitForm() {
+            // Get user input
+            var heartRate = document.getElementById("heartRate").value;
+            var bloodPressure = document.getElementById("bloodPressure").value;
+            var temperature = document.getElementById("temperature").value;
+
+            // Display data visualization (for demonstration purposes)
+            var dataVisualization = document.getElementById("dataVisualization");
+            dataVisualization.innerHTML = `
+                <p><strong>Heart Rate:</strong> ${heartRate}</p>
+                <p><strong>Blood Pressure:</strong> ${bloodPressure}</p>
+                <p><strong>Temperature:</strong> ${temperature}</p>
+            `;
+
+            // Check for anomalies and display alerts
+            var alertMessage = document.getElementById("alertMessage");
+            alertMessage.innerHTML = "";
+
+            if (parseInt(heartRate) > 100 || parseInt(heartRate) < 60) {
+                alertMessage.innerHTML += "Warning: Abnormal Heart Rate! ";
+            }
+
+            // Add additional checks for blood pressure and temperature
+
+            if (alertMessage.innerHTML === "") {
+                alertMessage.innerHTML = "No anomalies detected.";
+            }
+        }
+    </script>
+</body>
+</html>
